@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<div class="entete">
+		<h1>Ajouter une adresse</h1>
+	</div>
+	
+	
+	<div class="block">
+			<h2>Formulaire pour ajouter une adresse</h2>
+			<form method="get" action="ServletAjouterAdresse">
+				<fieldset id="section-1">
+					<legend>Informations personnelles</legend>
+					<label for ="nom">Saisir le nom de rue</label>
+					<input type="text" name="nomRue" id="nomRue"/><br/>
+					
+					<label for ="prenom">Saisir le nom de la ville :</label>
+					<input type="text" name="ville" id="ville"/><br/>
+				
+					<label for ="yeux">Saisir le code postale:</label>
+					<input type="text" name="codePostale" id="codePostale"/><br/>
+					
+				</fieldset>	
+				
+						<input type="submit" value="Valider">
+						
+			</form>
+
+		</div>
+
+</body>
+</html>
