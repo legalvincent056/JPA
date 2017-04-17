@@ -12,16 +12,17 @@ import service.IService;
 import service.Service;
 
 /**
- * Servlet implementation class ServletAjouterAdresse
+ * Servlet implementation class ServletModifierAdresse
  */
-@WebServlet("/ServletAjouterAdresse")
-public class ServletAjouterAdresse extends HttpServlet {
+@WebServlet("/ServletModifierAdresse")
+public class ServletModifierAdresse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public ServletAjouterAdresse() {
+    public ServletModifierAdresse() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -30,10 +31,10 @@ public class ServletAjouterAdresse extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-				
 		request.setCharacterEncoding("utf-8");
 		
 		//1- Récupérer paramètres
+		int id = Integer.parseInt(request.getParameter("id"));
 		String nomRue = request.getParameter("nomRue");
 		String ville = request.getParameter("ville");
 		String codePostale = request.getParameter("codePostale");
@@ -42,21 +43,23 @@ public class ServletAjouterAdresse extends HttpServlet {
 		//2- Traitement avec la couche service
 		IService is = new Service();
 		Adresse a = new Adresse();
+		a.setId(id);
 		a.setNomRue(nomRue);
 		a.setVille(ville);
 		a.setCodePostale(codePostale);
 		
-		is.ajouterAdresse(a);
+		is.modifierAdresse(a);
 		
 		
 		//3- Préparation de l'envoi
+		request.setAttribute("lid",id);
 		request.setAttribute("lenomRue",nomRue);
 		request.setAttribute("laville",ville);
 		request.setAttribute("lecodePostale",codePostale);
 		
 		//4-Envoi
-		request.getRequestDispatcher("/ajouterAdresse.jsp").forward(request, response);
-				
+		request.getRequestDispatcher("/modifierAdresse.jsp").forward(request, response);
+		
 	}
 
 	/**

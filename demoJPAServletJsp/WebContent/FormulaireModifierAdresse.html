@@ -2,21 +2,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ajouter une adresse</title>
+<title>Modifier Adresse</title>
 </head>
 <body>
-
-
-	<div class="entete">
-		<h1>Ajouter une adresse</h1>
-	</div>
-	
-	
 	<div class="block">
 			<h2>Formulaire pour ajouter une adresse</h2>
-			<form method="get" action="ServletAjouterAdresse">
+			<form method="get" action="ServletModifierAdresse">
 				<fieldset id="section-1">
 					<legend>Informations personnelles</legend>
+					<label for ="id">Saisir l'ID de l'adresse à modifier :</label>
+					<input type="text" name="id" id="id"/><br/>
+										
 					<label for ="nom">Saisir le nom de rue</label>
 					<input type="text" name="nomRue" id="nomRue"/><br/>
 					

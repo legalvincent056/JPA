@@ -12,16 +12,17 @@ import service.IService;
 import service.Service;
 
 /**
- * Servlet implementation class ServletAjouterAdresse
+ * Servlet implementation class ServletSupprimerAdresse
  */
-@WebServlet("/ServletAjouterAdresse")
-public class ServletAjouterAdresse extends HttpServlet {
+@WebServlet("/ServletSupprimerAdresse")
+public class ServletSupprimerAdresse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public ServletAjouterAdresse() {
+    public ServletSupprimerAdresse() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -29,34 +30,29 @@ public class ServletAjouterAdresse extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-				
+	
 		request.setCharacterEncoding("utf-8");
 		
 		//1- Récupérer paramètres
-		String nomRue = request.getParameter("nomRue");
-		String ville = request.getParameter("ville");
-		String codePostale = request.getParameter("codePostale");
-		
+		int id = Integer.parseInt(request.getParameter("id"));
+			
 		
 		//2- Traitement avec la couche service
 		IService is = new Service();
 		Adresse a = new Adresse();
-		a.setNomRue(nomRue);
-		a.setVille(ville);
-		a.setCodePostale(codePostale);
+		a.setId(id);
 		
-		is.ajouterAdresse(a);
+		is.deleteAdresse(a);
 		
 		
 		//3- Préparation de l'envoi
-		request.setAttribute("lenomRue",nomRue);
-		request.setAttribute("laville",ville);
-		request.setAttribute("lecodePostale",codePostale);
+		request.setAttribute("lid",id);
+		
 		
 		//4-Envoi
-		request.getRequestDispatcher("/ajouterAdresse.jsp").forward(request, response);
-				
+		request.getRequestDispatcher("/supprimerAdresse.jsp").forward(request, response);
+		
+		
 	}
 
 	/**
